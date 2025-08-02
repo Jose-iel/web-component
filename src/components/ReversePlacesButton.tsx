@@ -1,9 +1,7 @@
 import { FC, useState } from 'react';
-// import { searchWidgetDataLayer } from '@/components/groups/ResponsiveSearchBox/datalayer';
 import IconArrowDoubleReverse from './Icons/IconArrowDoubleReverse';
 import { useSearchFormContext } from '../contexts/SearchFormContext';
 import { SessionStorage } from '../utils/SessionStorage';
-// import { searchWidgetEvents } from '@/constants/dataLayer/searchWidget';
 import { IReversePlacesButton } from '../types';
 
 const ReversePlacesButton: FC<IReversePlacesButton> = ({ rowForm, reversePlacesInput }) => {
@@ -20,15 +18,6 @@ const ReversePlacesButton: FC<IReversePlacesButton> = ({ rowForm, reversePlacesI
     });
     reversePlacesInput();
     setRotate(!rotate);
-    // searchWidgetDataLayer({
-    //   event: searchWidgetEvents.REVERSE_ROUTE,
-    //   pageType: searchFormData?.pageInfo?.pageType ?? '',
-    //   store: searchFormData?.pageInfo?.store ?? '',
-    //   data: {
-    //     pageTitle: searchFormData?.pageInfo?.pageTitle ?? '',
-    //     versionSearchWidget: version,
-    //   },
-    // });
   };
 
   const reverseSessionStorage = () => {

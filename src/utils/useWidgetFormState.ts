@@ -1,5 +1,4 @@
 import { useState } from 'react';
-// import { sendRequestSearchDataLayer } from '@/components/pages/Home/dataLayer';
 import { ISearchFormData } from '../types';
 import { IPlacesInput } from '../types';
 
@@ -22,17 +21,8 @@ export const useWidgetFormState = (searchFormData: ISearchFormData | undefined) 
     isAllRequiredItemsValid: boolean,
     redirectToNextPage: (url: string) => void,
     url: string,
-    // name: string,
-    // pageType?: string
   ) => {
     if (isAllRequiredItemsValid) {
-      // sendRequestSearchDataLayer({
-      //   store: name,
-      //   data: {
-      //     versionSearchWidget: 1,
-      //   },
-      //   pageType,
-      // });
       redirectToNextPage(url);
     }
   };

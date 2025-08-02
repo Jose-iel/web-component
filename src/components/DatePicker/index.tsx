@@ -9,7 +9,6 @@ import { dateFormat, dateUtil, isValidDate, stringToDate } from '../../utils/dat
 import { SessionStorage } from '../../utils/SessionStorage';
 import CustomCalendar from './CustomCalendar';
 import { checkInputError } from '../../utils/checkInputError';
-// import { searchWidgetSelectDateDataLayer } from './datalayer';
 import { NewDatePickerProps } from '../../types';
 import simpleCms from '../../common/simpleCms.json';
 
@@ -95,7 +94,6 @@ export const NewDatePicker: FC<NewDatePickerProps> = ({
   // const whitelabelName = simpleCms.whitelabel.name;
 
   const ref = useRef<HTMLDivElement>(null);
-  const clickRef = useRef<HTMLElement>(null);
   const [inputValue, setInputValue] = useState<Date | undefined>();
   const [dateValue, setDateValue] = useState('');
 
@@ -118,7 +116,6 @@ export const NewDatePicker: FC<NewDatePickerProps> = ({
     setInputValue(dateObj?.date);
     setDateValue(dateFormat({ date: dateObj?.date }));
     setCustomCalendarVisible(false);
-    // searchWidgetSelectDateDataLayer(name, whitelabelName, dateUtil(dateObj?.date).format('YYYY-MM-DD'), pageType);
 
     if (setDate) {
       setDate(dateObj?.date);
@@ -142,7 +139,7 @@ export const NewDatePicker: FC<NewDatePickerProps> = ({
     setIsFocused(false);
     setTimeout(() => setHasFocus(false), 200);
     if (isValidDate(dateValue, format)) {
-      // searchWidgetSelectDateDataLayer(name, whitelabelName, dateValue, pageType);
+      // Validation passed
     }
   };
 

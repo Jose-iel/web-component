@@ -1,16 +1,5 @@
 import { FieldsName } from '../types';
 
-export enum ORDER_TRIP_CONTEXTS {
-  departure_type = 'departure_type',
-  return_type = 'return_type',
-}
-
-export enum ORDER_TRIP_TYPES {
-  DIRECT = 'direct',
-  CONNECTION = 'connection',
-  ONE_STOP = 'one_stop',
-}
-
 export const ONIBUS = '/onibus';
 
 export const fields: FieldsName = {
@@ -44,8 +33,6 @@ export const formattedDate = {
   YMD: 'YYYY-MM-DD',
   DMY: 'DD/MM/YYYY',
 };
-
-export const ONE_DAY_IN_MS = 24 * 60 * 60 * 1000;
 
 export const defaultResult = [
   {

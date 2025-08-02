@@ -28,7 +28,6 @@ export const WidgetForm: FC<WidgetFormProps> = ({
 
   //Importante
   const searchBox = simpleCms.searchBox;
-  const name = simpleCms.whitelabel.name;
   const isMobile = simpleCms.isMobile;
   const { searchFormData, setSearchFormData } = useSearchFormContext();
 

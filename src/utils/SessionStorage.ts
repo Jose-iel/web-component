@@ -1,8 +1,6 @@
 import { isBrowser } from './detectDevice';
 import type { TypeStorage } from '../types';
-import { isNil } from './isNill';
-import { isPrimitive } from './isPrimitive';
-import { Map } from './Map';
+import { isNil, isPrimitive, Map } from './Map';
 
 const setStorageItem = (key: string, object: unknown) => {
   const value = typeof object === 'string' ? object : JSON.stringify(object);

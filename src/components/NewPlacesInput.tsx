@@ -18,7 +18,6 @@ import { findClosestLocation } from '../components/geoLocation/utils';
 import { PlaceItem } from '../components/placeItem';
 import { checkInputError } from '../utils/checkInputError';
 import { defaultResult, initialState } from '../constants/orderTrip';
-// import { searchWidgetInvalidPlaceDataLayer, searchWidgetSelectPlaceDataLayer } from './datalayer';
 import { NewPlacesInputProps } from '../types';
 import { findCommonNameLocation } from '../utils/findCommoNameLocation';
 import simpleCms from '../common/simpleCms.json';
@@ -153,7 +152,6 @@ export const NewPlacesInput: FC<NewPlacesInputProps> = ({
     setInputValue(place);
 
     SessionStorage.set(id, place);
-    // searchWidgetSelectPlaceDataLayer(name, whitelabel.name, pageType);
     if (idNextFocus) {
       const nextInput = document.getElementById(idNextFocus);
       nextInput?.focus();
