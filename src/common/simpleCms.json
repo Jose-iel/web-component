@@ -1,0 +1,120 @@
+{
+  "searchBox": {
+    "title": "Compre sua passagem de ônibus",
+    "leavingFrom": "De onde você vai sair?",
+    "departureDate": "Data ida",
+    "widgetOriginError": "Selecione de onde você vai sair",
+    "widgetDepartureDateError": "Data de ida",
+    "goingTo": "Para onde você vai?",
+    "widgetDestinationError": "Selecione para onde você vai",
+    "returnDate": "Data volta",
+    "widgetReturnDateError": "Data de volta",
+    "searchWidgetOneWayTrip": "Somente Ida",
+    "searchWidgetRoundTrip": "Ida e Volta",
+    "searchButton": "Buscar passagem",
+    "originInputLabel": "Origem",
+    "originInputPlaceholder": "De onde você vai sair?",
+    "destinationInputLabel": "Destino",
+    "destinationInputPlaceholder": "Para onde você vai?",
+    "noResultText": "Nenhum resultado",
+    "departureDatePlaceholder": "__/__/__",
+    "departureDateLabel": "Ida",
+    "departureDateMobileLabel": "Data de ida",
+    "returnDatePlaceholder": "__/__/__",
+    "returnDateLabel": "Volta",
+    "returnDateMobileLabel": "Data de volta",
+    "tripWithBenefits": "Passagem com benefícios",
+    "gratuityOptionsText": "para Pessoas Idosas, Passe Livre e ID Jovem",
+    "displayRadio": true,
+    "showDisplayRadio": true,
+    "gratuity": [
+      {
+        "value": "",
+        "label": "Passagem Regular"
+      },
+      {
+        "value": "true",
+        "label": "Passagem Regular"
+      }
+    ],
+    "textSearchButton": "Buscar",
+    "invalidGratuity": "O benefício só é valido para passagem de ida.",
+    "suggestedPlaces": [
+      {
+        "id": 7627,
+        "name": "Rio de Janeiro, RJ - TODOS",
+        "slug": "rio-de-janeiro-rj-todos",
+        "type": "suggested",
+        "useGroupByCity": true,
+        "city": {
+          "id": 3582,
+          "name": "Rio de Janeiro"
+        }
+      },
+      {
+        "id": 1,
+        "name": "Sao Paulo, SP - TODOS",
+        "slug": "sao-paulo-sp-todos",
+        "type": "suggested",
+        "useGroupByCity": true,
+        "city": {
+          "id": 3982,
+          "name": "São Paulo"
+        }
+      },
+      {
+        "id": 8107,
+        "name": "Belo Horizonte, MG - TODOS",
+        "slug": "belo-horizonte-mg-todos",
+        "type": "suggested",
+        "useGroupByCity": true,
+        "city": {
+          "id": 474,
+          "name": "Belo Horizonte"
+        }
+      },
+      {
+        "id": 2953,
+        "name": "Florianopolis, SC",
+        "slug": "florianopolis-sc",
+        "type": "suggested",
+        "useGroupByCity": true,
+        "city": {
+          "id": 1735,
+          "name": "Florianópolis"
+        }
+      },
+      {
+        "id": 3874,
+        "name": "Salvador, BA",
+        "slug": "salvador-ba",
+        "type": "suggested",
+        "useGroupByCity": true,
+        "city": {
+          "id": 3754,
+          "name": "Salvador"
+        }
+      },
+      {
+        "id": 2714,
+        "name": "Curitiba, PR",
+        "slug": "curitiba-pr",
+        "type": "suggested",
+        "useGroupByCity": true,
+        "city": {
+          "id": 1207,
+          "name": "Curitiba"
+        }
+      }
+    ],
+    "geolocation": {
+      "info": "Usar minha localização",
+      "error": "Erro ao obter localização"
+    }
+  },
+  "isMobile": false,
+  "whitelabel": {
+    "name": "brazil",
+    "clientId": 2
+  }
+}

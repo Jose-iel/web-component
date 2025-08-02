@@ -1,0 +1,34 @@
+import { default as dayjs } from 'dayjs';
+import { OrderTrips } from '../types';
+import { ORDER_TRIP_CONTEXTS } from '../constants/orderTrip';
+declare const replaceCommaPoint: (value: string) => number;
+declare const priceToTwoDigits: (price?: string) => string;
+declare const currency: (_currency?: string, locale?: string) => Intl.NumberFormat;
+interface DateFormatProps {
+    date?: Date | string | null;
+    locale?: string;
+    format?: string;
+    timezone?: string;
+}
+declare const dateFormat: ({ date, format, locale, timezone, }: DateFormatProps) => string;
+declare const dateMonthFormat: (date: Date | number, dayFormat?: "numeric" | "2-digit" | undefined, monthFormat?: "numeric" | "2-digit" | "long" | "short" | "narrow" | undefined) => string;
+declare const stringToDate: (date: string, format?: string, strict?: boolean) => Date;
+declare const isValidDate: (date: string | Date | number, format?: string, strict?: boolean) => boolean;
+declare const formatDayOfWeekName: (date: string | Date | number) => any;
+declare const formatMonthName: (date: number | string) => any;
+declare const formatMonthSmallName: (date: number | string) => any;
+declare const dateUtil: typeof dayjs;
+declare const durationISOFormat: (duration: string) => string;
+declare const formatURL: (url: string) => string;
+declare const dayDiff: (arrivalScheduleDate?: string, departureScheduleDate?: string, asString?: boolean) => string | number | null;
+declare const isSameDate: (firstDate: string, secondDate: string) => boolean;
+declare const formatDateWithWeekNameDayAndMonth: (date: string, formatType?: string) => string;
+declare const formatDateOfDeparture: (trips: OrderTrips, context: ORDER_TRIP_CONTEXTS) => string;
+declare const addDaysToFormatDate: (date: string, daysToAdd: number) => string;
+declare const toQueryString: (objectParams: Record<string, string>) => string;
+declare const formatDayMonthYear: (dateStr: string) => string | null;
+declare const obfuscateValue: (value: string, visibleChars?: number) => string;
+declare const formatterDisplayName: (text: string) => string;
+declare const formatDateLabel: (isoDate: string) => string;
+declare const formatTimeOnlyHourMinute: (time: string) => string;
+export { replaceCommaPoint, priceToTwoDigits, currency, dateFormat, isValidDate, stringToDate, dateUtil, dateMonthFormat, durationISOFormat, formatterDisplayName, formatDateLabel, formatTimeOnlyHourMinute, formatDayOfWeekName, formatDateWithWeekNameDayAndMonth, formatMonthName, formatMonthSmallName, formatURL, dayDiff, isSameDate, formatDateOfDeparture, addDaysToFormatDate, toQueryString, formatDayMonthYear, obfuscateValue, };
