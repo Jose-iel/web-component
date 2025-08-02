@@ -1,5 +1,5 @@
 import { cloneElement, FC, HTMLAttributes, ReactElement, ReactNode, Children, isValidElement, JSXElementConstructor } from 'react';
-import Box from '../Box';
+import Box from '../ui/Box';
 
 export type RadioSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 

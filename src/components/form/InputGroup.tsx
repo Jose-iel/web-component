@@ -1,5 +1,5 @@
 import { cloneElement, FC, HTMLAttributes, ReactElement, isValidElement, Children } from 'react';
-import Box from '../Box';
+import Box from '../ui/Box';
 
 export interface InputGroupProps extends HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;

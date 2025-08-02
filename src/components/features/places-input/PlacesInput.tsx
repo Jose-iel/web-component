@@ -1,28 +1,28 @@
 import { FC, FormEvent, useCallback, useEffect, useRef, useState, RefObject } from 'react';
 import debounce from 'lodash.debounce';
-import Spin from './Spin';
-import { FormControl } from './form/FormControll';
-import { Input } from './form/Input';
-import { InputGroup } from './form/InputGroup';
-import { Box } from './Box';
-import { useSearchFormContext } from '../contexts/SearchFormContext';
-import { useOutsideClick } from '../utils/useOutsideClick';
-import { getPlaces, getPlacesByGeolocation } from '../service/getPlaces';
-import { removeAccents } from '../utils/removeAccents';
-import { scrollTop } from '../utils/scrollToTop';
-import { sortPlaces } from '../utils/sortPlaces';
-import { SessionStorage } from '../utils/SessionStorage';
-import { HttpError, IPlacesInput } from '../types';
-import GeolocationComponent from '../components/geoLocation';
-import { findClosestLocation } from '../components/geoLocation/utils';
-import { PlaceItem } from '../components/placeItem';
-import { checkInputError } from '../utils/checkInputError';
-import { defaultResult, initialState } from '../constants/orderTrip';
-import { NewPlacesInputProps } from '../types';
-import { findCommonNameLocation } from '../utils/findCommoNameLocation';
-import simpleCms from '../common/simpleCms.json';
+import Spinner from '../../ui/Spinner';
+import { FormControl } from '../../form/FormControll';
+import { Input } from '../../form/Input';
+import { InputGroup } from '../../form/InputGroup';
+import { Box } from '../../ui/Box';
+import { useSearchFormContext } from '../../../contexts/SearchFormContext';
+import { useOutsideClick } from '../../../hooks/useOutsideClick';
+import { getPlaces, getPlacesByGeolocation } from '../../../services/places-service';
+import { removeAccents } from '../../../utils/formatting/string-utils';
+import { scrollTop } from '../../../utils/dom/scroll-utils';
+import { sortPlaces } from '../../../utils/data/sort-places';
+import { SessionStorage } from '../../../utils/storage/session-storage';
+import { HttpError, IPlacesInput } from '../../../types';
+import GeolocationComponent from '../geolocation/GeolocationButton';
+import { findClosestLocation } from '../geolocation/geolocation-utils';
+import { PlaceItem } from './PlaceItem';
+import { checkInputError } from '../../../utils/validation/input-validation';
+import { defaultResult, initialState } from '../../../config/constants';
+import { NewPlacesInputProps } from '../../../types';
+import { findCommonNameLocation } from '../../../utils/data/location-utils';
+import simpleCms from '../../../config/cms-config.json';
 
-export const NewPlacesInput: FC<NewPlacesInputProps> = ({
+export const PlacesInput: FC<NewPlacesInputProps> = ({
   id,
   name,
   label,
@@ -177,7 +177,7 @@ export const NewPlacesInput: FC<NewPlacesInputProps> = ({
 
       loading && (
         <div key="loading" style={{ padding: '12px 16px', display: 'flex', alignItems: 'end', justifyContent: 'flex-end' }}>
-          <Spin size="16px" customSpin />
+          <Spinner size="16px" customSpin />
         </div>
       ),
 
@@ -286,6 +286,6 @@ export const NewPlacesInput: FC<NewPlacesInputProps> = ({
   );
 };
 
-NewPlacesInput.displayName = 'NewPlacesInput';
+PlacesInput.displayName = 'PlacesInput';
 
-export default NewPlacesInput;
+export default PlacesInput;

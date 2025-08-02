@@ -1,8 +1,8 @@
 import { FC } from 'react';
-import Box from '../Box';
-import IconCity from '../Icons/IconCity';
-import IconTerminal from '../Icons/IconTerminal';
-import { PlaceItemProps } from '../../types';
+import Box from '../../ui/Box';
+import IconCity from '../../Icons/IconCity';
+import IconTerminal from '../../Icons/IconTerminal';
+import { PlaceItemProps } from '../../../types';
 
 export const PlaceItem: FC<PlaceItemProps> = ({ place, handleClickItem, noResult, textPattern }) => {
   const highlightTerm = (text: string, matchPattern: RegExp) => {

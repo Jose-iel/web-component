@@ -1,16 +1,16 @@
 import { ChangeEvent, FC, useEffect, useRef, useState, useMemo } from 'react';
-import { Input } from '../form/Input';
-import { InputGroup } from '../form/InputGroup';
-import Box from '../Box';
-import { IconCalendar } from '../Icons/IconCalendar';
-import { useOutsideClick } from '../../utils/useOutsideClick';
-import { formattedDate } from '../../constants/orderTrip';
-import { dateFormat, dateUtil, isValidDate, stringToDate } from '../../utils/dateFormate';
-import { SessionStorage } from '../../utils/SessionStorage';
+import { Input } from '../../form/Input';
+import { InputGroup } from '../../form/InputGroup';
+import Box from '../../ui/Box';
+import { IconCalendar } from '../../Icons/IconCalendar';
+import { useOutsideClick } from '../../../hooks/useOutsideClick';
+import { formattedDate } from '../../../config/constants';
+import { dateFormat, dateUtil, isValidDate, stringToDate } from '../../../utils/formatting/date-utils';
+import { SessionStorage } from '../../../utils/storage/session-storage';
 import CustomCalendar from './CustomCalendar';
-import { checkInputError } from '../../utils/checkInputError';
-import { NewDatePickerProps } from '../../types';
-import simpleCms from '../../common/simpleCms.json';
+import { checkInputError } from '../../../utils/validation/input-validation';
+import { NewDatePickerProps } from '../../../types';
+import simpleCms from '../../../config/cms-config.json';
 
 export const cleanSetDate = (setDate: any) => {
   if (setDate) setDate(undefined);
@@ -72,7 +72,7 @@ const getInputGroupStyles = (
   return classes.trim();
 };
 
-export const NewDatePicker: FC<NewDatePickerProps> = ({
+export const DatePicker: FC<NewDatePickerProps> = ({
   id,
   name,
   minDate,
@@ -238,4 +238,4 @@ export const NewDatePicker: FC<NewDatePickerProps> = ({
   );
 };
 
-export default NewDatePicker;
+export default DatePicker;

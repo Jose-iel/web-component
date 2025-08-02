@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import Box from '../Box';
+import Box from '../../ui/Box';
 
 interface CustomCalendarProps {
   onDateSelected: (dateObj: { date: Date }) => void;

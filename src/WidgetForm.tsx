@@ -3,22 +3,22 @@ import { Button } from './components/form/Button';
 import { FormControl } from './components/form/FormControll';
 import { Radio } from './components/form/Radio';
 import { RadioGroup } from './components/form/RadioGroup';
-import Box from './components/Box';
-import { Loading } from './components/Loading';
-import ReversePlacesButton from './components/ReversePlacesButton';
+import Box from './components/ui/Box';
+import { Loading } from './components/ui/Loading';
+import ReversePlacesButton from './components/features/places-input/ReversePlacesButton';
 import { IconCircleLoader } from './components/Icons/IconCircleLoader';
 import { IconLocation } from './components/Icons/IconLocation';
 import { IconSend } from './components/Icons/IconSend';
 import { useSearchFormContext } from './contexts/SearchFormContext';
-import { useWidgetFormState } from './utils/useWidgetFormState';
-import { formattedDate } from './utils/formattedDate';
-import { dateFormat } from './utils/dateFormate';
-import NewDatePicker from './components/DatePicker';
-import NewPlacesInput from './components/NewPlacesInput';
-import { fields, initialBooleanState, INPUT_FIELDS, minDate, ONIBUS } from './constants/orderTrip';
-import simpleCms from './common/simpleCms.json';
+import { useWidgetFormState } from './hooks/useWidgetFormState';
+import { formattedDate } from './utils/formatting/formatted-date';
+import { dateFormat } from './utils/formatting/date-utils';
+import DatePicker from './components/features/date-picker/DatePicker';
+import PlacesInput from './components/features/places-input/PlacesInput';
+import { fields, initialBooleanState, INPUT_FIELDS, minDate, ONIBUS } from './config/constants';
+import simpleCms from './config/cms-config.json';
 import { FieldsName, WidgetFormProps } from './types';
-import { filterInitialPlaces, getDepartureDateLabel, getDepartureDatePlaceholder, getReturnDateLabel } from './utils/placesUtils';
+import { filterInitialPlaces, getDepartureDateLabel, getDepartureDatePlaceholder, getReturnDateLabel } from './utils/data/places-utils';
 
 export const WidgetForm: FC<WidgetFormProps> = ({
   sendInfoToDataLayer,
@@ -227,7 +227,7 @@ export const WidgetForm: FC<WidgetFormProps> = ({
                   md:flex-col
                 `}
               >
-                <NewPlacesInput
+                <PlacesInput
                   css={{ zIndex: 3 }}
                   disableGeolocation={disableOriginGeoLocation()}
                   icon={<IconLocation />}
@@ -257,7 +257,7 @@ export const WidgetForm: FC<WidgetFormProps> = ({
                 >
                   <ReversePlacesButton rowForm={rowForm} reversePlacesInput={reversePlacesInput} />
                 </Box>
-                <NewPlacesInput
+                <PlacesInput
                   css={{ zIndex: 1 }}
                   disableGeolocation={disableDestinationGeoLocation()}
                   icon={<IconSend />}
@@ -291,7 +291,7 @@ export const WidgetForm: FC<WidgetFormProps> = ({
               `}
             >
               <Box className="flex w-full">
-                <NewDatePicker
+                <DatePicker
                   errorMessage={searchBox.widgetDepartureDateError}
                   id="departure-date"
                   isDepartureDate
@@ -306,7 +306,7 @@ export const WidgetForm: FC<WidgetFormProps> = ({
                   rowForm={rowForm}
                   setDate={setDepartureDate}
                 />
-                <NewDatePicker
+                <DatePicker
                   disabled={isReturnDateDisabled()}
                   errorMessage={searchBox.widgetReturnDateError}
                   id="return-date"

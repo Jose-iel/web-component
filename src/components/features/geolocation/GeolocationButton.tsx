@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { IconCircleLoader } from '../Icons/IconCircleLoader';
-import IconGPS from '../Icons/IconGps';
-import Box from '../Box';
-import simpleCms from '../../common/simpleCms.json';
+import { IconCircleLoader } from '../../Icons/IconCircleLoader';
+import IconGPS from '../../Icons/IconGps';
+import Box from '../../ui/Box';
+import simpleCms from '../../../config/cms-config.json';
 
 interface GeolocationButtonProps {
   onLocationRetrieved: (latitude: number, longitude: number) => void;

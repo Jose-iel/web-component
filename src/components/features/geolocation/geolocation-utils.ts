@@ -1,4 +1,4 @@
-import { IPlacesInput } from "../../types";
+import { IPlacesInput } from "../../../types";
 
 function haversine(lat1: number, lon1: number, lat2: number, lon2: number): number {
   const radiusEarth = 6371.0; // km

@@ -1,6 +1,6 @@
 import { DetailsHTMLAttributes, FC } from 'react';
 import Box from './Box';
-import Spin from './Spin';
+import Spinner from './Spinner';
 
 interface LoadingProps extends DetailsHTMLAttributes<HTMLDivElement> {
   onClose?(visible: boolean): void;
@@ -52,7 +52,7 @@ export const Loading: FC<LoadingProps> = ({
           w-[70%] md:w-[30%]
         `}
       >
-        <Spin />
+        <Spinner />
 
         {title && !onlyLoader ? (
           <Box 

@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import Box, { BoxProps } from '../Box';
+import Box, { BoxProps } from '../ui/Box';
 
 export interface IconCircleLoaderProps extends Omit<BoxProps, 'width' | 'height'> {
   width?: string;

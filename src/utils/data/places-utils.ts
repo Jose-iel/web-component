@@ -1,4 +1,4 @@
-import { IPlacesInput } from '../types';
+import { IPlacesInput } from '../../types';
 
 type Places = IPlacesInput | null | undefined;
 

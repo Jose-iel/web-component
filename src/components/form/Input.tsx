@@ -1,5 +1,5 @@
 import { forwardRef, ReactNode } from 'react';
-import Box from '../Box';
+import Box from '../ui/Box';
 
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   height?: 'sm' | 'md' | 'lg';

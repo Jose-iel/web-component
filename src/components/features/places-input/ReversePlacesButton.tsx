@@ -1,8 +1,8 @@
 import { FC, useState } from 'react';
-import IconArrowDoubleReverse from './Icons/IconArrowDoubleReverse';
-import { useSearchFormContext } from '../contexts/SearchFormContext';
-import { SessionStorage } from '../utils/SessionStorage';
-import { IReversePlacesButton } from '../types';
+import IconArrowDoubleReverse from '../../Icons/IconArrowDoubleReverse';
+import { useSearchFormContext } from '../../../contexts/SearchFormContext';
+import { SessionStorage } from '../../../utils/storage/session-storage';
+import { IReversePlacesButton } from '../../../types';
 
 const ReversePlacesButton: FC<IReversePlacesButton> = ({ rowForm, reversePlacesInput }) => {
   const [rotate, setRotate] = useState<boolean>(false);

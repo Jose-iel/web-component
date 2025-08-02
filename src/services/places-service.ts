@@ -1,5 +1,5 @@
 import { HttpError, ClientId, IPlacesInput } from '../types';
-import { bffApi } from './http';
+import { bffApi } from './http-service';
 
 export const getPlaces = async (
   clientId: ClientId,

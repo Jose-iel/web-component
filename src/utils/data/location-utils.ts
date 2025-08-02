@@ -1,4 +1,4 @@
-import { IPlacesInput } from '../types';
+import { IPlacesInput } from '../../types';
 
 export const findCommonNameLocation = (closestLocation: IPlacesInput, locations: IPlacesInput[]): IPlacesInput | null => {
   const targetNameDenominator = closestLocation?.name?.split('-')[0].trim();

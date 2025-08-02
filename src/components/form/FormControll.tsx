@@ -1,5 +1,5 @@
 import { FC, HTMLAttributes, ReactNode } from 'react';
-import Box from '../Box';
+import Box from '../ui/Box';
 
 export type FormControlProps = HTMLAttributes<HTMLDivElement> & {
   css?: React.CSSProperties;
