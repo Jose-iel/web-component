@@ -18,21 +18,22 @@ export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 // Mapeamento de variantes para classes Tailwind
 const variantClasses = {
   primary: `
-    bg-blue-600 text-white
-    hover:bg-blue-700
-    active:bg-blue-800
+    bg-purple-600 text-white font-bold
+    hover:bg-purple-700
+    active:bg-purple-800
     disabled:bg-gray-100 disabled:text-gray-400
+    transition-all duration-300 ease-in-out transform active:scale-95
   `,
   secondary: `
-    border border-blue-600 bg-transparent text-blue-600
-    hover:border-blue-700 hover:bg-blue-50 hover:text-blue-700
-    active:border-blue-700 active:bg-blue-100 active:text-blue-700
+    border border-purple-600 bg-transparent text-purple-600
+    hover:border-purple-700 hover:bg-purple-50 hover:text-purple-700
+    active:border-purple-700 active:bg-purple-100 active:text-purple-700
     disabled:bg-transparent disabled:border-gray-400 disabled:text-gray-400
   `,
   tertiary: `
-    bg-transparent text-blue-600
-    hover:text-blue-700
-    active:text-blue-800
+    bg-transparent text-purple-600
+    hover:text-purple-700
+    active:text-purple-800
     disabled:text-gray-400
   `,
   black: `
@@ -64,7 +65,7 @@ const variantClasses = {
 // Mapeamento de tamanhos para classes Tailwind
 const sizeClasses = {
   sm: 'px-4 py-1.5',
-  md: 'px-4 py-2.5',
+  md: 'px-4 py-3',
   lg: 'px-4 py-3.5',
   xl: 'px-12 py-2.5',
 };
@@ -89,7 +90,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     // Classes base do botão
     const baseClasses = `
       flex flex-row items-center justify-center
-      rounded-full text-xs
+      rounded-xl text-xs
       disabled:pointer-events-none
       transition-colors duration-150
     `;

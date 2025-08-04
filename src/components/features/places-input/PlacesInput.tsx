@@ -230,26 +230,7 @@ export const PlacesInput: FC<NewPlacesInputProps> = ({
     <div ref={ref}>
       <FormControl className="relative mb-0" data-testid={id}>
         <InputGroup 
-          className={`
-            ${rowForm ? 'w-full' : 'w-[270px] md:w-full'} 
-            h-14 cursor-pointer py-2 border border-solid transition-all duration-300 ease-in-out
-            ${hasError 
-              ? 'border-red-500 hover:border-red-500 hover:bg-white' 
-              : 'border-gray-400 hover:border-blue-500 hover:bg-blue-50 focus-within:border-blue-500 focus-within:bg-blue-50'
-            }
-            ${isOriginInput 
-              ? rowForm 
-                ? 'rounded-t-2xl' 
-                : 'rounded-l-[30px] md:rounded-t-2xl md:rounded-bl-none'
-              : ''
-            }
-            ${isDestinationInput 
-              ? rowForm 
-                ? 'rounded-b-2xl border-t-0' 
-                : 'border-l-0 border-r-0 pl-2 md:rounded-b-2xl md:border md:border-t-0 md:pl-0'
-              : ''
-            }
-          `}
+          className="w-full h-auto cursor-pointer py-0 border-none bg-transparent"
         >
           <Input
             {...props}
@@ -266,6 +247,7 @@ export const PlacesInput: FC<NewPlacesInputProps> = ({
             error={hasError ? getErrorMessage() : undefined}
             showErrorMessage={false}
             label={!hasError ? label : getErrorMessage()}
+            className="border-none bg-transparent p-0 focus:ring-0"
           />
         </InputGroup>
 

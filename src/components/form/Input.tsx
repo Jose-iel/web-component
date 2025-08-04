@@ -84,9 +84,18 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
       ${className || ''}
     `;
 
-    if (success) {
+    // Para inputs customizados (PlacesInput), usar estilo limpo
+    if (customInput) {
+      classes = `
+        w-full text-gray-700 bg-transparent border-none p-0 focus:ring-0 focus:outline-none
+        placeholder:text-gray-400
+        ${className || ''}
+      `;
+    }
+
+    if (success && !customInput) {
       classes += ' border-green-500 hover:border-green-500';
-    } else if (hasError) {
+    } else if (hasError && !customInput) {
       classes += ' border-red-500 hover:border-red-500 hover:bg-white';
     }
 
@@ -97,7 +106,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   const getIconClasses = (isRight = false, isButton = false) => {
     let classes = `
       absolute top-0 bottom-0 flex items-center justify-center
-      ${isRight ? (isButton ? 'right-2' : 'right-5') : 'left-4'}
+      ${isRight ? (isButton ? 'right-2' : 'right-5') : (customInput ? 'left-0' : 'left-4')}
     `;
 
     if (iconDisabled) {
@@ -109,7 +118,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
     } else if (isRight) {
       classes += ' text-gray-800';
     } else {
-      classes += ' text-blue-600';
+      classes += customInput ? ' text-purple-600' : ' text-blue-600';
     }
 
     return classes;
@@ -123,7 +132,10 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
       {label && (
         <span
           className={`
-            text-sm px-4 pb-1.5 text-gray-700
+            ${customInput 
+              ? 'text-xs text-gray-500 mb-1' 
+              : 'text-sm px-4 pb-1.5 text-gray-700'
+            }
             ${customInput ? 'pb-0 h-4' : ''}
             ${hasError ? 'text-red-500' : ''}
           `}
@@ -152,6 +164,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
           disabled={disabled}
           autoComplete={autoComplete}
           className={getInputClasses()}
+          style={customInput && icon ? { paddingLeft: '2rem' } : {}}
           {...rest}
           {...(props.inputRef ? { ref: props.inputRef } : { ref: ref })}
         />

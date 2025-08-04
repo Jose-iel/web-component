@@ -24,6 +24,8 @@ export const Radio: FC<RadioProps> = ({
   
   const isChecked = props.defaultChecked || props.checked;
   
+  console.log('Radio render:', { id, value, isChecked, defaultChecked: props.defaultChecked, checked: props.checked });
+  
   // Mapeamento de tamanhos para classes Tailwind
   const sizeClasses: Record<RadioSize, { wrapper: string; inner: string; hover: string }> = {
     xs: { wrapper: 'w-3 h-3', inner: 'w-1.5 h-1.5', hover: 'w-6 h-6' },
@@ -68,38 +70,31 @@ export const Radio: FC<RadioProps> = ({
         {/* RadioBefore - Container principal */}
         <Box 
           className={`
-            flex relative rounded-full bg-transparent items-center justify-center mr-2
-            ${currentSize.wrapper}
+            flex relative rounded-full bg-white items-center justify-center mr-2
+            w-5 h-5
             ${isChecked 
-              ? (props.disabled ? 'border-gray-400' : 'border-blue-600') 
-              : 'border-gray-600'}
-            border
+              ? (props.disabled ? 'border-gray-400' : 'border-purple-500') 
+              : 'border-gray-300'}
+            border-2 cursor-pointer transition-all duration-200 ease-in-out
+            ${!props.disabled ? 'hover:shadow-purple-300 focus:shadow-purple-300' : ''}
           `}
         >
-          {/* RadioHover - Efeito hover */}
-          <Box
-            className={`
-              inline-flex absolute rounded-full bg-transparent z-[3]
-              ${currentSize.hover}
-              hover:bg-blue-50
-              ${props.disabled ? 'hover:bg-transparent' : ''}
-            `}
-          />
-          
           {/* RadioAfter - Círculo interno */}
           <Box
             className={`
               absolute inline-flex rounded-full z-[4] 
-              ${currentSize.inner}
+              w-3 h-3
               transform -translate-x-1/2 -translate-y-1/2
               left-1/2 top-1/2 transition-all duration-200 ease-in-out
               ${isChecked 
-                ? (props.disabled ? 'bg-gray-400' : 'bg-blue-600') 
+                ? (props.disabled ? 'bg-gray-400' : 'bg-purple-500') 
                 : 'bg-transparent'}
             `}
           />
         </Box>
-        {children}
+        {children && (
+          <span className="text-gray-700 font-medium">{children}</span>
+        )}
       </Box>
     </Box>
   );

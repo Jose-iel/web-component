@@ -10,7 +10,7 @@ export interface IconArrowDoubleReverseProps extends Omit<IconProps, 'children'>
 export const IconArrowDoubleReverse: FC<IconArrowDoubleReverseProps> = ({ 
   width = defaultWidth, 
   height = defaultHeight, 
-  color = '#3B82F6', // blue-600 como padrão
+  color = '#9333EA', // purple-600 como padrão
   ...rest 
 }) => (
   <IconBase

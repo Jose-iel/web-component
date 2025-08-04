@@ -28,7 +28,7 @@ export const WidgetForm: FC<WidgetFormProps> = ({
 
   //Importante
   const searchBox = simpleCms.searchBox;
-  const isMobile = simpleCms.isMobile;
+  const isMobile = simpleCms.isMobile; 
   const { searchFormData, setSearchFormData } = useSearchFormContext();
 
   const [booleanStates, setBooleanStates] = useState(initialBooleanState);
@@ -50,6 +50,8 @@ export const WidgetForm: FC<WidgetFormProps> = ({
 
   const { departureDateInvalid, returnDateInvalid, originInvalid, destinationInvalid, loading, onlyDeparture, hideInputs } =
     booleanStates;
+  
+  console.log('WidgetForm render:', { onlyDeparture, displayRadio });
   const filteredInitialPlaces = filterInitialPlaces(origin, destination, searchBox.suggestedPlaces);
   const pageType = searchFormData?.pageInfo?.pageType ?? '';
 
@@ -162,35 +164,75 @@ export const WidgetForm: FC<WidgetFormProps> = ({
 
   return (
     <Box
-      className={`
-        bg-white rounded flex flex-row relative z-[2] w-full justify-center
-        ${!rowForm && !displayRadio ? 'mt-4' : 'mt-0'}
-      `}
+      className="bg-gray-100 flex items-center justify-center min-h-screen p-4"
       data-testid="search-form-container"
     >
-      <Box 
-        className={`
-          flex justify-center
-          ${rowForm ? 'w-full' : 'w-auto'}
-        `}
-      >
-        <form method="get" id="search-widget-responsive" autoComplete="off" onSubmit={callSearch} className='flex justify-center w-full'>
-          <Box 
-            className={`
-              justify-center w-full
-              ${rowForm ? 'flex flex-col' : 'block'}
-              md:flex md:flex-col md:w-full
-            `}
-          >
-            <Box 
-              className={`
-                mt-[22px]
-                ${displayRadio ? 'flex order-1' : 'hidden order-0'}
-                ${rowForm ? 'md:flex' : ''}
-                md:order-1
-                ${displayRadio ? 'md:flex' : 'md:hidden'}
-              `}
-            >
+      <Box className="w-full max-w-sm bg-white p-6 sm:p-8 rounded-2xl shadow-lg">
+        
+        {/* Título */}
+        <h1 className="text-center text-2xl font-bold text-gray-800 mb-6" style={{ fontSize: '1.5rem' }}>
+          {searchBox.title || "Compre sua passagem de ônibus"}
+        </h1>
+
+        <form method="get" id="search-widget-responsive" autoComplete="off" onSubmit={callSearch}>
+          <Box className="flex flex-col gap-6">
+            {/* Seção de Origem e Destino */}
+            <Box className="relative border border-gray-200 rounded-xl p-4">
+              <PlacesInput
+                css={{ zIndex: 3 }}
+                disableGeolocation={disableOriginGeoLocation()}
+                icon={<IconLocation />}
+                id="origin"
+                idNextFocus={getNextFocusOfOriginInput()}
+                initialValue={origin}
+                initialPlaces={filteredInitialPlaces}
+                isInvalid={originInvalid}
+                isOriginInput
+                isRequired
+                label={searchBox.originInputLabel}
+                name="origin-final"
+                placeholder={searchBox.originInputPlaceholder}
+                pageType={pageType}
+                rowForm={rowForm}
+                scrollTo="mobile"
+                setSelectedPlace={setOrigin}
+                setUsageGeolocationOn={setUsageGeolocationOn}
+                onClick={handleOpenSearch}
+              />
+              
+              {/* Divisor */}
+              <hr className="my-3 border-gray-200" />
+              
+              <PlacesInput
+                css={{ zIndex: 1 }}
+                disableGeolocation={disableDestinationGeoLocation()}
+                icon={<IconSend />}
+                id="destination"
+                idNextFocus="departure-date"
+                initialValue={destination}
+                initialPlaces={filteredInitialPlaces}
+                isDestinationInput
+                isInvalid={destinationInvalid}
+                isRequired
+                label={searchBox.destinationInputLabel}
+                name="destination-final"
+                placeholder={searchBox.destinationInputPlaceholder}
+                pageType={pageType}
+                rowForm={rowForm}
+                scrollTo="mobile"
+                setSelectedPlace={setDestination}
+                setUsageGeolocationOn={setUsageGeolocationOn}
+                onClick={handleOpenSearch}
+              />
+
+              {/* Botão de Troca */}
+              <Box className="absolute top-1/2 -translate-y-1/2 right-4">
+                <ReversePlacesButton rowForm={rowForm} reversePlacesInput={reversePlacesInput} />
+              </Box>
+            </Box>
+            
+            {/* Seção de Tipo de Viagem (Ida / Ida e Volta) */}
+            <Box className="flex items-center justify-start space-x-8">
               <RadioGroup
                 onChange={(value: any) => {
                   setBooleanStates(prevState => ({ ...prevState, onlyDeparture: value }));
@@ -198,10 +240,8 @@ export const WidgetForm: FC<WidgetFormProps> = ({
                 }}
                 name="search-box-radio-group"
                 value={onlyDeparture}
-                className={`
-                  ${rowForm ? 'pl-0 pb-4' : 'pl-2.5 pb-2.5'}
-                  md:pl-0 md:pb-4
-                `}
+                direction="row"
+                className="flex items-center justify-start space-x-8"
                 size="md"
                 data-testid="search-box-radio-group"
               >
@@ -213,84 +253,9 @@ export const WidgetForm: FC<WidgetFormProps> = ({
                 </Radio>
               </RadioGroup>
             </Box>
-            <Box 
-              className={`
-                ${displayRadio ? 'order-2' : 'order-1'}
-                ${rowForm ? 'flex flex-col gap-6 mb-0' : `block float-left gap-0 ${!displayRadio ? 'mb-4' : 'mb-0'}`}
-                md:flex md:flex-col md:gap-6 md:order-0
-              `}
-            >
-              <Box 
-                className={`
-                  relative flex
-                  ${rowForm ? 'flex-col' : 'flex-row'}
-                  md:flex-col
-                `}
-              >
-                <PlacesInput
-                  css={{ zIndex: 3 }}
-                  disableGeolocation={disableOriginGeoLocation()}
-                  icon={<IconLocation />}
-                  id="origin"
-                  idNextFocus={getNextFocusOfOriginInput()}
-                  initialValue={origin}
-                  initialPlaces={filteredInitialPlaces}
-                  isInvalid={originInvalid}
-                  isOriginInput
-                  isRequired
-                  label={searchBox.originInputLabel}
-                  name="origin-final"
-                  placeholder={searchBox.originInputPlaceholder}
-                  pageType={pageType}
-                  rowForm={rowForm}
-                  scrollTo="mobile"
-                  setSelectedPlace={setOrigin}
-                  setUsageGeolocationOn={setUsageGeolocationOn}
-                  onClick={handleOpenSearch}
-                />
-                <Box 
-                  className={`
-                    absolute z-10
-                    ${rowForm ? 'top-1/2 right-2 -translate-y-1/2' : 'top-8 left-1/2 -translate-x-1/2 -translate-y-1/2'}
-                    md:top-1/2 md:left-auto md:right-2 md:-translate-y-1/2 md:translate-x-0
-                  `}
-                >
-                  <ReversePlacesButton rowForm={rowForm} reversePlacesInput={reversePlacesInput} />
-                </Box>
-                <PlacesInput
-                  css={{ zIndex: 1 }}
-                  disableGeolocation={disableDestinationGeoLocation()}
-                  icon={<IconSend />}
-                  id="destination"
-                  idNextFocus="departure-date"
-                  initialValue={destination}
-                  initialPlaces={filteredInitialPlaces}
-                  isDestinationInput
-                  isInvalid={destinationInvalid}
-                  isRequired
-                  label={searchBox.destinationInputLabel}
-                  name="destination-final"
-                  placeholder={searchBox.destinationInputPlaceholder}
-                  pageType={pageType}
-                  rowForm={rowForm}
-                  scrollTo="mobile"
-                  setSelectedPlace={setDestination}
-                  setUsageGeolocationOn={setUsageGeolocationOn}
-                  onClick={handleOpenSearch}
-                />
-              </Box>
-            </Box>
-            <FormControl 
-              className={`
-                order-2 pr-4
-                ${rowForm && !displayRadio ? 'flex' : 'block float-left'}
-                ${rowForm ? 'pr-0' : 'pr-4'}
-                justify-between
-                md:pr-0
-                ${displayRadio ? 'md:block' : hideInputs ? 'md:hidden' : 'md:flex'}
-              `}
-            >
-              <Box className="flex w-full">
+            {/* Seção de Datas */}
+            <FormControl className="w-full">
+              <Box className="grid grid-cols-2 border border-gray-200 rounded-xl">
                 <DatePicker
                   errorMessage={searchBox.widgetDepartureDateError}
                   id="departure-date"
@@ -324,14 +289,8 @@ export const WidgetForm: FC<WidgetFormProps> = ({
                 />
               </Box>
             </FormControl>
-            <Box 
-              className={`
-                flex order-3
-                ${rowForm ? 'w-full h-12' : 'w-41 h-14'}
-                md:flex md:w-full md:h-12
-                [&_button]:flex [&_button]:gap-2
-              `}
-            >
+            {/* Botão de Busca */}
+            <Box className="w-full">
               <Button
                 id="search-box-button"
                 type="submit"

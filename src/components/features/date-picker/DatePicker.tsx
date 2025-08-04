@@ -30,7 +30,7 @@ export const validateMsgError = ({
 
 // Função para gerar estilos do container
 const getInputContainerStyles = (rowForm: boolean) => {
-  return `${rowForm ? 'w-1/2' : 'w-full'} md:w-1/2`;
+  return `w-full`;
 };
 
 // Função para gerar estilos do InputGroup
@@ -42,31 +42,16 @@ const getInputGroupStyles = (
   rowForm: boolean
 ) => {
   let classes = `
-    ${rowForm ? 'w-full' : 'w-[165px]'} md:w-full
-    h-14 cursor-pointer border border-gray-400 gap-1
-    hover:border-blue-600 hover:bg-blue-50 hover:transition-all hover:duration-300
-    focus:border-blue-600 focus:bg-blue-50
-    focus-within:border-blue-600 focus-within:bg-blue-50
+    w-full h-auto cursor-pointer bg-transparent border-none
+    flex items-center space-x-3 p-4
   `;
 
-  if (hasError) {
-    classes += ' border-red-500';
-  }
-
   if (isDepartureDate) {
-    classes += rowForm 
-      ? ' rounded-l-2xl border-r-0' 
-      : ' rounded-none border-r-0';
-  }
-
-  if (isReturnDate) {
-    classes += rowForm 
-      ? ' rounded-r-2xl' 
-      : ' rounded-r-[30px]';
+    classes += ' border-r border-gray-200';
   }
 
   if (isDisabled) {
-    classes += ' border-gray-400 bg-gray-50 pointer-events-none';
+    classes += ' opacity-50 pointer-events-none';
   }
 
   return classes.trim();
@@ -190,21 +175,33 @@ export const DatePicker: FC<NewDatePickerProps> = ({
           className={`relative ${getInputGroupStyles(isReturnDate, isDepartureDate, disabled, hasError, rowForm)}`}
           data-testid={id}
         >
+          {hasIcon && (
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+          )}
+          <div className="flex flex-col">
+            <label className="text-xs text-gray-500">{props.label}</label>
+            <p className={`font-medium ${dateValue ? 'text-gray-700' : 'text-gray-400'}`}>
+              {dateValue || '__ /__ /__'}
+            </p>
+          </div>
+
           <Input
             {...props}
-            label={validateMsgError({ hasError, errorMessage, textDefault: props.label })}
+            label=""
             type={isMobile && !disabled ? 'date' : 'text'}
             value={dateValue}
-            placeholder={isMobile && isFocused ? '' : props.placeholder}
+            placeholder=""
             onChange={handleInputChange}
             layout="default"
             id={id}
             fill
-            icon={hasIcon ? <IconCalendar /> : undefined}
+            icon={undefined}
             error={validateMsgError({ hasError, errorMessage })}
             min={minDateMobileInput}
-            customInput
-            className="border-none rounded-[80px] h-5 w-[97%] p-2"
+            customInput={false}
+            className="sr-only"
             css={{ padding: '8px 0px' }}
             disabled={disabled}
             onFocus={handleInputFocus}

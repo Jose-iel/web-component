@@ -51,6 +51,8 @@ export const RadioGroup: FC<RadioGroupProps> = (props: RadioGroupProps) => {
     
     const defaultChecked = childProps?.value === value || childProps?.value === defaultValue;
     
+    console.log('RadioGroup processing:', { childValue: childProps?.value, groupValue: value, defaultChecked });
+    
     const theming = {
       onChange: () => onChangeProp(childProps?.value),
       name,
@@ -59,7 +61,7 @@ export const RadioGroup: FC<RadioGroupProps> = (props: RadioGroupProps) => {
       size: childProps?.size || size,
       // Aplica margin apenas para Radio em direção row (exceto o primeiro)
       ...(childName === 'Radio' && !first && direction.includes('row') 
-        ? { className: `ml-6 ${childProps?.className || ''}` } 
+        ? { className: `ml-8 ${childProps?.className || ''}` } 
         : {}),
     };
     first = false;
