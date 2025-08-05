@@ -15,8 +15,8 @@ export default defineConfig({
   build: {
     lib: {
       entry: "src/index.ts",
-      name: "FormWidget", // O nome global da sua biblioteca quando usada em um ambiente IIFE
-      fileName: (format) => `form-widget.${format}.js`, // Define o nome do arquivo de saída
+      name: "FormWidget",
+      fileName: (format) => `form-widget.${format}.js`,
     },
     rollupOptions: {
       external: [],

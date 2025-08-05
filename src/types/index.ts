@@ -5,6 +5,7 @@ export type WidgetFormProps = {
   sendInfoToDataLayer?: () => void;
   rowForm?: boolean;
   displayRadio?: boolean;
+  title?: string;
 };
 
 export type FieldsName = {

@@ -24,6 +24,7 @@ export const WidgetForm: FC<WidgetFormProps> = ({
   sendInfoToDataLayer,
   rowForm = false,
   displayRadio = false,
+  title
 }: WidgetFormProps) => {
 
   //Importante
@@ -169,9 +170,8 @@ export const WidgetForm: FC<WidgetFormProps> = ({
     >
       <Box className="w-full max-w-sm bg-white p-6 sm:p-8 rounded-2xl shadow-lg">
         
-        {/* Título */}
         <h1 className="text-center text-2xl font-bold text-gray-800 mb-6" style={{ fontSize: '1.5rem' }}>
-          {searchBox.title || "Compre sua passagem de ônibus"}
+          {title}
         </h1>
 
         <form method="get" id="search-widget-responsive" autoComplete="off" onSubmit={callSearch}>

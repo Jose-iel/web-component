@@ -6,6 +6,9 @@ import WidgetForm from "./WidgetForm";
 const customElementName: string = "form-widget";
 
 const FormWebComponent = r2wc(WidgetForm, React, ReactDOM, {
+  props: {
+    title: "string",
+  },
   // shadow: "closed",
 });
 
